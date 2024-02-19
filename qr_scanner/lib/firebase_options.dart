@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '707631703569',
     projectId: 'qr-app-ieee-nu',
     authDomain: 'qr-app-ieee-nu.firebaseapp.com',
+    databaseURL: 'https://qr-app-ieee-nu-default-rtdb.firebaseio.com',
     storageBucket: 'qr-app-ieee-nu.appspot.com',
     measurementId: 'G-7QBD4NYT69',
   );
@@ -58,6 +59,7 @@ class DefaultFirebaseOptions {
     appId: '1:707631703569:android:b3ceca6791748f0382b3b0',
     messagingSenderId: '707631703569',
     projectId: 'qr-app-ieee-nu',
+    databaseURL: 'https://qr-app-ieee-nu-default-rtdb.firebaseio.com',
     storageBucket: 'qr-app-ieee-nu.appspot.com',
   );
 
@@ -66,6 +68,7 @@ class DefaultFirebaseOptions {
     appId: '1:707631703569:ios:8029e06a8a9f7dba82b3b0',
     messagingSenderId: '707631703569',
     projectId: 'qr-app-ieee-nu',
+    databaseURL: 'https://qr-app-ieee-nu-default-rtdb.firebaseio.com',
     storageBucket: 'qr-app-ieee-nu.appspot.com',
     iosBundleId: 'com.example.qrScanner',
   );
@@ -75,6 +78,7 @@ class DefaultFirebaseOptions {
     appId: '1:707631703569:ios:e81aa459819c302e82b3b0',
     messagingSenderId: '707631703569',
     projectId: 'qr-app-ieee-nu',
+    databaseURL: 'https://qr-app-ieee-nu-default-rtdb.firebaseio.com',
     storageBucket: 'qr-app-ieee-nu.appspot.com',
     iosBundleId: 'com.example.qrScanner.RunnerTests',
   );

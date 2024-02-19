@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:gsheets/gsheets.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-
+import 'dart:typed_data';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 const _credintial = r'''
 {
@@ -73,6 +76,8 @@ class _QrGeneratorState extends State<QrGenerator> {
 //   }
 // }
 
+/// read the email as unique key and return the names
+
 void ReadData() async {
   final gsheet = GSheets(_credintial);
   final ss = await gsheet.spreadsheet(_spreadsheetId);
@@ -84,14 +89,29 @@ void ReadData() async {
     return;
   }
 
-  // Get the non-empty rows from the "Name" column
-  var nonEmptyRows = await sheet.cells.column(2, fromRow: 2);
-  
-  for (var i = 0; i < nonEmptyRows.length; i++) {
-    var cellValue = nonEmptyRows[i]?.value;
-    
-    if (cellValue != null && cellValue.isNotEmpty) {
-      print("$cellValue");
+  // Get all rows, starting from the second row (index 1)
+  var rows = await sheet.values.allRows(fromRow: 1);
+
+  // Map to store unique emails and their corresponding names
+  Map<String, String> uniqueEmails = {};
+
+  // Iterate through the rows and extract unique emails and names
+  for (var row in rows) {
+    if (row.length >= 3) { // Ensure there are enough columns
+      String email = row[2].toString().toLowerCase(); // Get email and convert to lowercase for case-insensitive comparison
+      String name = row[1];
+
+      // Add to the map only if the email is not already present
+      if (!uniqueEmails.containsKey(email)) {
+        uniqueEmails[email] = name;
+      }
     }
   }
+
+  // Print the unique emails and names
+  for (var entry in uniqueEmails.entries) {
+    print("Email: ${entry.key}, Name: ${entry.value}");
+  }
+
+   // TODO: Use the uniqueEmails map for QR code generation
 }

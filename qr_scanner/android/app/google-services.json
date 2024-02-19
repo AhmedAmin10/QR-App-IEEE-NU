@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "707631703569",
+    "firebase_url": "https://qr-app-ieee-nu-default-rtdb.firebaseio.com",
     "project_id": "qr-app-ieee-nu",
     "storage_bucket": "qr-app-ieee-nu.appspot.com"
   },
